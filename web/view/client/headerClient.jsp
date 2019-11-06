@@ -23,7 +23,8 @@
     </div>
     <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#"> <img src="/Shop/static/client/img/logo.png" alt="">
+            <a class="navbar-brand" href="#">
+                <img src="/Shop/static/client/img/logoCompany.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
@@ -37,7 +38,7 @@
                 <ul class="navbar-nav">
                     <li><a href="/Shop/homePage">Home</a></li>
                     <li><a href="/Shop/client/view/product-list">All Products</a></li>
-                    <!-- Dropdown -->
+                  
                     <li class="dropdown"><a class="dropdown-toggle" href="#"
                                             id="navbardrop" data-toggle="dropdown"> Categories </a>
                         <div class="dropdown-menu">

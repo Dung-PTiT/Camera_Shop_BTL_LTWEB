@@ -5,7 +5,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8" style="background-color: #b0e8bd"> </div>     					                                                               
+                        <div class="col-md-8" style="background-color: #b0e8bd">
+
+                        </div>     					                                                               
                         <div class="col-md-2" style="background-color: #b0e8bd"> 
                             <ul class="list"><li><a href="/Shop/login"><i class="fa fa-user" ></i> Login</a> </li></ul>             			                                             
                         </div>
@@ -20,7 +22,7 @@
     <nav class="navbar navbar-expand-lg  navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="/Shop/static/client/img/logo.png" alt="">
+                <img src="/Shop/static/client/img/logoCompany.png" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

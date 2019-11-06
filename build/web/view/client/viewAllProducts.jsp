@@ -8,7 +8,7 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="/Shop/static/client/img/logo.png">
+        <link rel="shortcut icon" href="/Shop/static/client/img/logoCompany.png">
         <!-- Author Meta -->
         <meta name="author" content="CodePixar">
         <!-- Meta Description -->
@@ -47,79 +47,31 @@
     </head>
     <body>
         <jsp:include page="./menuClient.jsp" />
-        <section class="category-area section-gap section-gap" id="catagory">
+        <section class="category-area section-gap section-gap" id="catagory" style="padding-bottom:0px">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content pb-40">
                         <div class="title text-center">
-                            <h1 class="mb-10">Shop for Different Categories</h1>
+                            <h1 class="mb-10">Camera Shop </h1>
                             <p>Who are in extremely love with eco friendly system.</p>
                         </div>
                     </div>
-                </div>					
+                </div>	
                 <div class="row">
-                    <div class="col-lg-8 col-md-8 mb-10">
-                        <div class="row category-bottom">
-                            <div class="col-lg-6 col-md-6 mb-30">
-                                <div class="content">
-                                    <a href="#" target="_blank">
-                                        <div class="content-overlay"></div>
-                                        <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/c1.jpg" alt="">
-                                        <div class="content-details fadeIn-bottom">
-                                            <h3 class="content-title">Product for Women</h3>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb-30">
-                                <div class="content">
-                                    <a href="#" target="_blank">
-                                        <div class="content-overlay"></div>
-                                        <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/c2.jpg" alt="">
-                                        <div class="content-details fadeIn-bottom">
-                                            <h3 class="content-title">Product for Couple</h3>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="content">
-                                    <a href="#" target="_blank">
-                                        <div class="content-overlay"></div>
-                                        <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/c3.jpg" alt="">
-                                        <div class="content-details fadeIn-bottom">
-                                            <h3 class="content-title">Shop Now</h3>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>																
-                        </div>							
-                    </div>
-                    <div class="col-lg-4 col-md-4 mb-10">
+                    <div class="col-lg-12 col-md-12 mb-30">
                         <div class="content">
-                            <a href="#" target="_blank">
-                                <div class="content-overlay"></div>
-                                <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/c4.jpg" alt="">
-                                <div class="content-details fadeIn-bottom">
-                                    <h3 class="content-title">Product For Men</h3>
-                                </div>
+                            <a href="#" target="_blank">                            
+                                <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/main.jpg" alt="">
                             </a>
                         </div>
-                    </div>						
-                </div>
-            </div>	
-        </section>
-        <section >
-            <div class="overlay overlay-bg"></div>
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-40">
-                        <div class="title text-center">
-                            <h1 class="text-white mb-10">New realeased Products for
-                                Everybody</h1>
-                        </div>
                     </div>
-                </div>
+
+                </div>               
+            </div>	
+        </section>     
+        <section >
+            <hr color="red">
+            <div class="container">
                 <div class="row">
                     <c:forEach items="${productList }" var="p">
                         <div class="col-lg-3 col-md-6 single-product">
