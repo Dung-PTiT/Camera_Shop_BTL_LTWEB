@@ -23,9 +23,6 @@
         <link
             href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
             rel="stylesheet">
-        <!--
-                    CSS
-                    ============================================= -->
         <link rel="stylesheet" href="/Shop/static/client/css/linearicons.css">
         <link rel="stylesheet" href="/Shop/static/client/css/owl.carousel.css">
         <link rel="stylesheet"
@@ -38,11 +35,24 @@
         <link rel="stylesheet" href="/Shop/static/client/css/bootstrap.css">
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
         <style>
-            #product-thumbnail {
-                max-width: 200px;
-                max-height: 200px;
-                min-width: 200px;
-                min-height: 200px;
+             #product-thumbnail {
+                max-width: 170px;
+                max-height: 170px;
+                min-width: 170px;
+                min-height: 170px;
+                
+            }
+            .breadcrumb-banner {
+                padding: 0 0 0 0; 
+            }
+            .organic-breadcrumb {
+                margin-bottom: 40px; 
+                margin-top: 62px;
+            }
+            .breadcrumb-banner .col-first {
+                margin-top: 43px;
+                width: 38%;
+                padding-right: 15px;
             }
         </style>
     </head>
@@ -50,22 +60,18 @@
         <jsp:include page="./headerClient.jsp"></jsp:include>
 
             <section class="banner-area organic-breadcrumb">
-                <div class="container">
-                    <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
-                        <div class="col-first">
-                            <h1>Product Order</h1>
-                            <nav class="d-flex align-items-center justify-content-start">
-                                <a href="index.html">Home<i class="fa fa-caret-right"
-                                                            aria-hidden="true"></i></a> <a href="cart.html">Product Order</a>
-                            </nav>
-                        </div>
+                 <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+                    <div class="col-first">
+                        <h4 class="text-white">Product Order Page</h4>
                     </div>
                 </div>
+            </div>
             </section>
 
             <div class="container">
                 <div class="cart-title">
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-4">
                             <h6 class="ml-15">Product</h6>
                         </div>
@@ -86,7 +92,6 @@
                 <div class="cart-single-item">
                 <c:forEach items="${sessionScope.cart }" var="itemMap">
                     <div class="row align-items-center">
-
                         <c:url
                             value='/imageProduct?fileName=${itemMap.value.product.productFileName }'
                             var="imgUrl" />

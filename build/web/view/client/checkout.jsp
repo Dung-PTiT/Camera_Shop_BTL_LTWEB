@@ -37,6 +37,15 @@
               href="/Shop/static/client/css/ion.rangeSlider.skinFlat.css" />
         <link rel="stylesheet" href="/Shop/static/client/css/bootstrap.css">
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
+        <style>
+            .breadcrumb-banner {
+                padding: 0px 0 0px 0;
+            }
+            .organic-breadcrumb {
+                margin-bottom: 100px;
+                margin-top: 0px; 
+            }
+        </style>
     </head>
     <body>
         <jsp:include page="./headerClient.jsp"></jsp:include>
@@ -58,61 +67,69 @@
                 <form action="/Shop/client/informationBill" class="billing-form" method="post">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
-                            <h3 class="billing-title mt-20 mb-10">Billing Details</h3>				
+                            <h3 class="title" mt-20 mb-10">Bill Details</h3>	
+                            <hr color="red">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <input type="text" name= "firstname" placeholder="First name*"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'First name*'" required
-                                           class="common-input" >
+                                           class="common-input" style="border: 1px solid burlywood;">
                                 </div>
                                 <div class="col-lg-6">
                                     <input type="text" name="lastname" placeholder="Last name*"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Last name*'" required
-                                           class="common-input">
+                                           class="common-input" style="border: 1px solid burlywood;">
                                 </div>	
                                 <div class="col-lg-6">
                                     <input type="text" name= "phoneOrder" placeholder="Phone number*"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Phone number*'" required
-                                           class="common-input">
+                                           class="common-input" style="border: 1px solid burlywood;">
                                 </div>
                                 <div class="col-lg-6">
                                     <input type="email" name= "emailOrder" placeholder="Email Address*"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Email Address*'" required
-                                           class="common-input">
+                                           class="common-input" style="border: 1px solid burlywood;">
                                 </div>
                                 <div class="col-lg-12">
                                     <input type="text" name= "deliveryAddress" placeholder="Delivery Address"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Delivery Address'" required
-                                           class="common-input">
+                                           class="common-input"style="border: 1px solid burlywood;" >
                                 </div>
-                                <button class="view-btn color-2 w-100 mt-20" type="submit">
+                                <button class="view-btn color-2  mt-20" type="submit" style="margin-left: 263px">
                                     <span>Proceed to Checkout</span>
                                 </button>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
-                            <div class="order-wrapper mt-50">
-                                <h3 class="billing-title mb-10">Your Order</h3>
-                                <div class="order-list">
-                                    <div class="list-row d-flex justify-content-between">
-                                        <div>Product</div>
-                                        <div>Quantity</div>
-                                        <div>Total</div>
-                                    </div>
-                                <c:forEach items="${sessionScope.cart }" var="itemMap">
-                                    <div class="row">
-
-                                        <div class="col-sm-7">${itemMap.value.product.name }</div>
-                                        <div class="col-sm-2">${itemMap.value.buyQuantity }</div>
-                                        <div class="col-sm-3">${itemMap.value.sellPrice * itemMap.value.buyQuantity } $</div>
-
-                                    </div>
-                                </c:forEach>
+                            <div class="order-wrapper" style="padding-top:5px; background-color: ivory; border: 1px dashed;">
+                                <h3 class="text-success">Your Order</h3>
+                                <hr color="green">
+                                <div class="order-list">                             
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${sessionScope.cart }" var="itemMap">
+                                            <tr>
+                                                <td>${itemMap.value.product.name }</td>
+                                                <td>${itemMap.value.buyQuantity }</td>
+                                                <td>${itemMap.value.sellPrice * itemMap.value.buyQuantity } $</td>
+                                            </tr>
+                                        </tbody>
+                                    </c:forEach>
+                                </table>
+                    
+                                <hr color ="green">
                                 <div class="list-row d-flex justify-content-between">
                                     <h6>Total</h6>
                                     <div class="total">${sessionScope.sum } $</div>
@@ -122,19 +139,19 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
-        <hr>
-        <hr>
 
-        <script src="/Shop/static/client/js/jquery/jquery-2.2.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="/Shop/static/client/js/popper.min.js"></script>
-        <!-- Bootstrap js -->
-        <script src="/Shop/static/client/js/bootstrap.min.js"></script>
-        <!-- Plugins js -->
-        <script src="/Shop/static/client/js/plugins.js"></script>
-        <!-- Active js -->
-        <script src="/Shop/static/client/js/active.js"></script>
-    </body>
+    </form>
+</div>
+<hr color = "red">           
+<script src="/Shop/static/client/js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="/Shop/static/client/js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="/Shop/static/client/js/bootstrap.min.js"></script>
+<!-- Plugins js -->
+<script src="/Shop/static/client/js/plugins.js"></script>
+<!-- Active js -->
+<script src="/Shop/static/client/js/active.js"></script>
+</body>
 </html>

@@ -1,15 +1,14 @@
 <!-- Start Header Area -->
 <header class="default-header">
-    <div class="menutop-wrap">
+    <div class="menutop-wrap" style="background-color: beige;">
         <div class="menu-top container">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8" style="background-color: #b0e8bd">
-
+                        <div class="col-md-8">
                         </div>     					                                                               
-                        <div class="col-md-2" style="background-color: #b0e8bd"> 
-                            <ul class="list"><li><a href="/Shop/login"><i class="fa fa-user" ></i> Login</a> </li></ul>             			                                             
+                        <div class="col-md-2 "> 
+                            <ul class="list"><li style="margin-left: 70px"><a href="/Shop/login"><i class="fa fa-user" ></i> Login</a> </li></ul>             			                                             
                         </div>
                         <div class="col-md-2">                
                             <ul class="list"><li><a href="/Shop/register"><i class="fa fa-user-plus"></i> Register</a></li></ul>                              
@@ -28,10 +27,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <!--                    <li><a href="/Shop/homePage">Home</a></li>-->
-                    <li><a href="/Shop/view/product-list">All Products</a></li>								
-                    <!-- Dropdown -->
+                <ul class="navbar-nav">                            
+                    <li><a href="/Shop/view/product-list">All Products</a></li>								                  
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Categories

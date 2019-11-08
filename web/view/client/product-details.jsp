@@ -38,10 +38,23 @@
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
         <style>
             #product-thumbnail {
-                max-width: 200px;
-                max-height: 200px;
-                min-width: 200px;
-                min-height: 200px;
+                max-width: 300px;
+                max-height: 300px;
+                min-width: 300px;
+                min-height: 300px;
+                margin-left: 120px;
+            }
+            .breadcrumb-banner {
+                padding: 0 0 0 0; 
+            }
+            .organic-breadcrumb {
+                margin-bottom: 40px; 
+                margin-top: 62px;
+            }
+            .breadcrumb-banner .col-first {
+                margin-top: 43px;
+                width: 38%;
+                padding-right: 15px;
             }
         </style>
     </head>
@@ -51,12 +64,7 @@
             <div class="container">
                 <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
                     <div class="col-first">
-                        <h1>Single Product Page</h1>
-                        <nav class="d-flex align-items-center justify-content-start">
-                            <a href="index.html">Home<i class="fa fa-caret-right"
-                                                        aria-hidden="true"></i></a> <a href="single.html">Single Product
-                                Page</a>
-                        </nav>
+                        <h4 class="text-white">Product Detail Page</h4>
                     </div>
                 </div>
             </div>
@@ -183,7 +191,7 @@
 
                                         </div>
                                         <div class="d-flex mt-20">
-                                            <a href="/Shop/client/cart-item/add" class="view-btn color-2"><span>Add to
+                                            <a href="/Shop/cart-item/add" class="view-btn color-2"><span>Add to
                                                     Cart</span></a> <a href="#" class="like-btn"><span
                                                     class="lnr lnr-layers"></span></a> <a href="#" class="like-btn"><span
                                                     class="lnr lnr-heart"></span></a>

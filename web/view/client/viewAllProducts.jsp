@@ -38,17 +38,29 @@
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
         <style>
             #product-thumbnail {
-                max-width: 200px;
-                max-height: 200px;
-                min-width: 200px;
-                min-height: 200px;
+                max-width: 180px;
+                max-height: 180px;
+                min-width: 180px;
+                min-height: 180px; 
+                border-radius: 80px;   
+            }
+            #product-thumbnail:hover{
+                max-width: 205px;
+                max-height: 205px;
+                min-width: 205px;
+                min-height: 205px; 
+            }
+            #productInfo:hover{
+                border: 2px solid #eee;
+                border-radius: 60px;
+                background-color: #eee;
             }
         </style>
     </head>
     <body>
         <jsp:include page="./menuClient.jsp" />
         <section class="category-area section-gap section-gap" id="catagory" style="padding-bottom:0px">
-            <div class="container">
+            <div class="container" style="margin-top: 40px;">
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content pb-40">
                         <div class="title text-center">
@@ -71,24 +83,27 @@
         </section>     
         <section >
             <hr color="red">
-            <div class="container">
+            <div class="container" style="margin-top: 40px;">
+                <div class="row d-flex justify-content-center">
+                    <div class="menu-content pb-40">
+                        <div class="title text-center">
+                            <h1 class="mb-10">ALL PRODUCTS</h1>
+                            <p>Who are in extremely love with eco friendly system.</p>
+                        </div>
+                    </div>
+                </div>	
                 <div class="row">
                     <c:forEach items="${productList }" var="p">
-                        <div class="col-lg-3 col-md-6 single-product">
+                        <div class="col-lg-3 col-md-6 single-product" id="productInfo">
                             <div class="content">
-                                <div class="content-overlay"></div>
                                 <c:url value="/imageProduct?fileName=${p.productFileName }"
                                        var="imgUrl"></c:url>
                                 <a href="/Shop/view/product-detail?id=${p.id}"><img
                                         class="img-responsive sm-margin-bottom-20" src="${imgUrl}" id="product-thumbnail" class="rounded img-thumbnail"></a>					
-                                <div class="content-details fadeIn-bottom">
-                                    <div class="bottom d-flex align-items-center justify-content-center">	
-                                        <a href="/Shop/view/product-detail?id=${p.id}"><span class="lnr lnr-cart"></span></a> 				
-                                    </div>
-                                </div>
+                                <a href="/Shop/view/product-detail?id=${p.id}"></a> 				
                             </div>
                             <div class="price">
-                                <h4><a href="/Shop/view/product-detail?id=${p.id}">${p.name }</a></h4>
+                                <h5><a href="/Shop/view/product-detail?id=${p.id}">${p.name }</a></h5>
                                 <h5>${p.price } $</h5>
                             </div>
                         </div>
