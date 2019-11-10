@@ -23,13 +23,16 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
     @Override
     public void insert(Cart cart) {
-        String sql = "INSERT INTO cart(person_id, buy_date) VALUES (?,?)";
+        String sql = "INSERT INTO cart(person_id, buy_date, name_order, phone_order, address_order) VALUES (?,?,?,?,?)";
         Connection conn = super.getConnect();
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, cart.getBuyer().getId());
             ps.setDate(2, new Date(cart.getBuyDate().getTime()));
+            ps.setString(3, cart.getNameOrder());
+            ps.setString(4, cart.getPhoneOrder());
+            ps.setString(5, cart.getAddressOrder());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -63,7 +66,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         try {
             con.close();
         } catch (SQLException ex) {
@@ -84,7 +87,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         try {
             con.close();
         } catch (SQLException ex) {
@@ -94,7 +97,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
     @Override
     public Cart get(int id) {
-        String sql = "SELECT cart.cart_id, cart.buy_date, person.username, person.id AS person_id "
+        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id WHERE cart.cart_id=?";
         Connection con = super.getConnect();
 
@@ -110,6 +113,9 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
                 cart.setId(rs.getInt("cart_id"));
                 cart.setBuyDate(rs.getDate("buy_date"));
                 cart.setBuyer(person);
+                cart.setNameOrder(rs.getString("name_order"));
+                cart.setPhoneOrder(rs.getString("phone_order"));
+                cart.setAddressOrder(rs.getString("address_order"));
 
                 return cart;
 
@@ -118,7 +124,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         try {
             con.close();
         } catch (SQLException ex) {
@@ -130,7 +136,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
     @Override
     public List<Cart> getAll() {
         List<Cart> cartList = new ArrayList<Cart>();
-        String sql = "SELECT cart.cart_id, cart.buy_date, person.username, person.id AS person_id "
+        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id";
         Connection con = super.getConnect();
 
@@ -145,7 +151,9 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
                 cart.setId(rs.getInt("cart_id"));
                 cart.setBuyDate(rs.getDate("buy_date"));
                 cart.setBuyer(person);
-
+                cart.setNameOrder(rs.getString("name_order"));
+                cart.setPhoneOrder(rs.getString("phone_order"));
+                cart.setAddressOrder(rs.getString("address_order"));
                 cartList.add(cart);
 
             }
@@ -153,7 +161,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         try {
             con.close();
         } catch (SQLException ex) {

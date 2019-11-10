@@ -134,14 +134,11 @@
             </div>
             <div
                 class="cupon-area d-flex align-items-center justify-content-between flex-wrap">
-                <div class="row">
-                    <div class="col-md-10"></div>
-                    <div class="col-md-2">
-                        <!--  <input class="btn btn-primary" type="submit" value="Order">-->
-                        <c:url value="/client/order/add" var="url" />
+                <div class="row">                  
+                    <div class="col-md-2">                
+                        <c:url value="/client/checkout" var="url" />
                         <form action="${url }" method="post">
-                            <hr>
-                            <input class="btn btn-primary" type="submit" value="Order">
+                            <input class="btn btn-primary" type="submit" value="Order" style="margin-left: 938px">
                         </form>
                     </div>
                 </div>

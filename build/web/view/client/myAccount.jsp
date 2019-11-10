@@ -43,6 +43,9 @@
                 min-width: 300px;
                 min-height: 300px;
             }
+            .organic-breadcrumb {            
+                margin-top: 0px;
+            }
         </style>
     </head>
     <body>
@@ -91,7 +94,7 @@
                         <button class="view-btn color-2" type="submit" style="margin-left:  883px;border: 1px solid;">
                             <span>Back to Home</span>
                         </button>
-                        
+
                     </form>
                 </div>
             </div>

@@ -64,44 +64,32 @@
                 </div>
             </section>
             <div class="container">
-                <form action="/Shop/client/informationBill" class="billing-form" method="post">
+                <form action="/Shop/client/order/add" class="billing-form" method="post">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h3 class="title" mt-20 mb-10">Bill Details</h3>	
                             <hr color="red">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" name= "firstname" placeholder="First name*"
+                                <div class="col-lg-12">
+                                    <input type="text" name= "fullname" placeholder="Fullname*"
                                            onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'First name*'" required
+                                           onblur="this.placeholder = 'Fullname*'" required
                                            class="common-input" style="border: 1px solid burlywood;">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" name="lastname" placeholder="Last name*"
-                                           onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Last name*'" required
-                                           class="common-input" style="border: 1px solid burlywood;">
-                                </div>	
-                                <div class="col-lg-6">
+                                </div>                           
+                                <div class="col-lg-12">
                                     <input type="text" name= "phoneOrder" placeholder="Phone number*"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Phone number*'" required
                                            class="common-input" style="border: 1px solid burlywood;">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="email" name= "emailOrder" placeholder="Email Address*"
-                                           onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Email Address*'" required
-                                           class="common-input" style="border: 1px solid burlywood;">
-                                </div>
+                                </div>                              
                                 <div class="col-lg-12">
                                     <input type="text" name= "deliveryAddress" placeholder="Delivery Address"
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Delivery Address'" required
                                            class="common-input"style="border: 1px solid burlywood;" >
                                 </div>
-                                <button class="view-btn color-2  mt-20" type="submit" style="margin-left: 263px">
-                                    <span>Proceed to Checkout</span>
+                                <button class="view-btn color-2  mt-20" type="submit" style="margin-left: 263px; border: 2px solid blue;">
+                                    <span>Order</span>
                                 </button>
                             </div>
                         </div>
@@ -128,7 +116,7 @@
                                         </tbody>
                                     </c:forEach>
                                 </table>
-                    
+
                                 <hr color ="green">
                                 <div class="list-row d-flex justify-content-between">
                                     <h6>Total</h6>
@@ -140,7 +128,6 @@
                     </div>
                 </div>
         </div>
-
     </form>
 </div>
 <hr color = "red">           

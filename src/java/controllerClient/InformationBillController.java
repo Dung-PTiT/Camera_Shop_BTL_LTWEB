@@ -12,16 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 public class InformationBillController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String firstName = req.getParameter("firstname");
-		String lastName = req.getParameter("lastname");
-		String name = firstName + " " + lastName;
-		req.setAttribute("fullname",name);
-		String phone = req.getParameter("phoneOrder");
-		req.setAttribute("phoneO",phone);
-		String email = req.getParameter("emailOrder");
-		req.setAttribute("emailO",email);
-		String address = req.getParameter("deliveryAddress");
-		req.setAttribute("deliveryAdd",address);
+	
+		String fullname = "Trong Dung";
+		req.setAttribute("fullname",fullname);
+		req.setAttribute("phoneO","0123456789");	
+		req.setAttribute("emailO","trongdungk53@gmail.com");
+		req.setAttribute("deliveryAdd","Thuan Thanh, Bac Ninh");
 		RequestDispatcher dispatcher = 
 				req.getRequestDispatcher("/view/client/BillInformation.jsp");
 				dispatcher.forward(req, resp);		

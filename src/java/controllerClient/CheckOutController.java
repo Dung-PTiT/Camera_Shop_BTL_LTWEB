@@ -16,11 +16,12 @@ import model.CartItem;
 @WebServlet(urlPatterns="/client/checkout")
 public class CheckOutController extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		double sum = 0;
 		HttpSession session = req.getSession();
 		Object obj = session.getAttribute("cart");
+                
 		Map<Integer,CartItem> mapCartItem = (Map<Integer,CartItem>)obj;	
 		Set<Integer> set = mapCartItem.keySet();
 		for(Integer key : set) {

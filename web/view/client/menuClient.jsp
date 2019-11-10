@@ -41,9 +41,7 @@
                             <a class="dropdown-item" href="/Shop/view/product/category?cate_id=17">May anh chup lay ngay</a>
                         </div>
                     </li>	
-                    <li><a href="/Shop/client/order/list">Cart</a></li>
-                    <li><a href="/Shop/client/checkout">Check Out</a></li>
-                    <li><a href="/Shop/logout">Logout</a></li>								
+                    <li><a href="/Shop/client/order/list">Cart</a></li>						
                 </ul>
             </div>						
         </div>

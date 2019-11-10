@@ -44,6 +44,18 @@
                 min-width: 150px;
                 min-height: 150px;
             }
+            .breadcrumb-banner {
+                padding: 0 0 0 0; 
+            }
+            .organic-breadcrumb {
+                margin-bottom: 40px; 
+                margin-top: 62px;
+            }
+            .breadcrumb-banner .col-first {
+                margin-top: 43px;
+                width: 38%;
+                padding-right: 15px;
+            }
         </style>
     </head>
     <body>
@@ -53,11 +65,7 @@
                 <div class="container">
                     <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
                         <div class="col-first">
-                            <h1>Shopping Cart</h1>
-                            <nav class="d-flex align-items-center justify-content-start">
-                                <a href="index.html">Home<i class="fa fa-caret-right"
-                                                            aria-hidden="true"></i></a> <a href="cart.html">Shopping Cart</a>
-                            </nav>
+                            <h4 class="text-white">Quick view cart</h4>
                         </div>
                     </div>
                 </div>

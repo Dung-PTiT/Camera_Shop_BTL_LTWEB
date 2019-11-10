@@ -59,7 +59,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="./menuClient.jsp" />
+        <jsp:include page="./headerClient.jsp" />
         <section class="banner-area organic-breadcrumb">
             <div class="container">
                 <div class="breadcrumb-banner d-flex flex-wrap align-items-center">

@@ -28,6 +28,12 @@ public class OrderClientController extends HttpServlet{
 	PersonService personService = new PersonServiceImpl();
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            
+                String fullname = req.getParameter("fullname");              	
+		String phone = req.getParameter("phoneOrder");               	
+		String address = req.getParameter("deliveryAddress");
+               
+                 
 		HttpSession session = req.getSession();
 		Object objP = session.getAttribute("user");
 		Person buyer = (Person) objP;
@@ -36,6 +42,9 @@ public class OrderClientController extends HttpServlet{
 		cart.setBuyDate(new Date());
 		buyer = personService.get(buyerId);
 		cart.setBuyer(buyer);
+                cart.setNameOrder(fullname);
+                cart.setPhoneOrder(phone);
+                cart.setAddressOrder(address);
 		cartService.insert(cart);
 		Object obj = session.getAttribute("cart");
 		if( obj != null) {	
@@ -47,6 +56,6 @@ public class OrderClientController extends HttpServlet{
 				cartItemService.insert(cartItem);
 			}
 		}
-		resp.sendRedirect(req.getContextPath() + "/client/checkout");
+		resp.sendRedirect(req.getContextPath() + "/client/view/product-list");
 	}
 }

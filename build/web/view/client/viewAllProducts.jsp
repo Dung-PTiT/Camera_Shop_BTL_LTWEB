@@ -71,10 +71,8 @@
                 </div>	
                 <div class="row">
                     <div class="col-lg-12 col-md-12 mb-30">
-                        <div class="content">
-                            <a href="#" target="_blank">                            
-                                <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/main.jpg" alt="">
-                            </a>
+                        <div class="content">                            
+                            <img class="content-image img-fluid d-block mx-auto" src="/Shop/static/client/img/main.jpg" alt="">                         
                         </div>
                     </div>
 
