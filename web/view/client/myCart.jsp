@@ -39,10 +39,10 @@
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
         <style>
             #product-thumbnail {
-                max-width: 200px;
-                max-height: 200px;
-                min-width: 200px;
-                min-height: 200px;
+                max-width: 150px;
+                max-height: 150px;
+                min-width: 150px;
+                min-height: 150px;
             }
         </style>
     </head>
@@ -86,7 +86,6 @@
                 <div class="cart-single-item">
                 <c:forEach items="${sessionScope.cart }" var="itemMap">
                     <div class="row align-items-center">
-
                         <c:url
                             value='/imageProduct?fileName=${itemMap.value.product.productFileName }'
                             var="imgUrl" />
@@ -94,7 +93,7 @@
                             <div class="product-item d-flex align-items-center">
                                 <img src="${imgUrl}" id="product-thumbnail"
                                      class="rounded img-thumbnail">
-                                <h4>${itemMap.value.product.name }</h4>
+                                <h6>${itemMap.value.product.name }</h6>
                             </div>
                         </div>
                         <div class="col-md-2 col-6">
@@ -111,7 +110,7 @@
                         </div>
                         <div class="col-md-2 col-12">
                             <a
-                                href="<c:url value='/client/cart-item/delete?productId=${itemMap.key}'/>">Delete</a>
+                                href="<c:url value='/client/cart-item/delete?productId=${itemMap.key}'/>"><i class="fa fa-remove text-danger" style="font-size: 30px"></i></a>
                         </div>
                     </div>
                 </c:forEach>

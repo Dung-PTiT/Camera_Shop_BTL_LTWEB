@@ -35,12 +35,12 @@
         <link rel="stylesheet" href="/Shop/static/client/css/bootstrap.css">
         <link rel="stylesheet" href="/Shop/static/client/css/main.css">
         <style>
-             #product-thumbnail {
-                max-width: 170px;
-                max-height: 170px;
-                min-width: 170px;
-                min-height: 170px;
-                
+            #product-thumbnail {
+                max-width: 150px;
+                max-height: 150px;
+                min-width: 150px;
+                min-height: 150px;
+
             }
             .breadcrumb-banner {
                 padding: 0 0 0 0; 
@@ -60,13 +60,13 @@
         <jsp:include page="./headerClient.jsp"></jsp:include>
 
             <section class="banner-area organic-breadcrumb">
-                 <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
-                    <div class="col-first">
-                        <h4 class="text-white">Product Order Page</h4>
+                <div class="container">
+                    <div class="breadcrumb-banner d-flex flex-wrap align-items-center">
+                        <div class="col-first">
+                            <h4 class="text-white">Product Order Page</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
             </section>
 
             <div class="container">
@@ -85,7 +85,7 @@
                             <h6>Total</h6>
                         </div>
                         <div class="col-md-2">
-                            <h6>Select</h6>
+                            <h6>Action</h6>
                         </div>
                     </div>
                 </div>
@@ -95,38 +95,40 @@
                         <c:url
                             value='/imageProduct?fileName=${itemMap.value.product.productFileName }'
                             var="imgUrl" />
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-4">
                             <div class="product-item d-flex align-items-center">
                                 <img src="${imgUrl}" id="product-thumbnail"
                                      class="rounded img-thumbnail">
-                                <h4>${itemMap.value.product.name }</h4>
+                                <h6>${itemMap.value.product.name }</h6>
                             </div>
                         </div>
-                        <div class="col-md-1 col-6">
+                        <div class="col-md-2">
                             <div class="price">${itemMap.value.sellPrice }$</div>
                         </div>
-                        <div class="col-md-1 col-6">
+                        <div class="col-md-2">
                             <div class="price">${itemMap.value.buyQuantity }</div>
                         </div>
-                        <div class="col-md-2 col-12">
+                        <div class="col-md-2">
                             <div class="total">${itemMap.value.sellPrice * itemMap.value.buyQuantity }
                                 $</div>
                         </div>
-                        <div class="col-md-1 col-12">
+                        <div class="col-md-2">
                             <a
-                                href="<c:url value='/client/cart-item/delete?productId=${itemMap.key}'/>">Delete</a>
+                                href="<c:url value='/client/cart-item/delete?productId=${itemMap.key}'/>"><i class="fa fa-remove text-danger" style="font-size: 30px"></i></a>
+                                
+                            <form method="get" action="/Shop/client/cart-item/add">
+                                <input type="text" value="${itemMap.value.product.id }"
+                                       name="productId" hidden="" class="quantity-amount ml-15">
+                                <input type='text' class="quantity-field" name='quantity'
+                                       value="0" id='qty' style="width: 20%"/>
+                                <button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Add</button>
+                            </form>
                         </div>
-                        <div class="col-md-3 col-6">
-                            <div class="quantity-container d-flex align-items-center mt-15">
-                                <form method="get" action="/Shop/client/cart-item/add">
-                                    <input type="text" value="${itemMap.value.product.id }"
-                                           name="productId" hidden="" class="quantity-amount ml-15">
-                                    <input type='text' class="quantity-field" name='quantity'
-                                           value="0" id='qty' />
-                                    <button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Add</button>
-                                </form>
-                            </div>
-                        </div>
+                        <!--                        <div class="col-md-2 col-6">
+                                                    <div class="quantity-container d-flex align-items-center mt-15">
+                                                      
+                                                    </div>
+                                                </div>-->
                     </div>
                 </c:forEach>
             </div>

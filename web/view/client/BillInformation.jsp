@@ -123,7 +123,7 @@
                                 </table>
                             </div>
                         </div>
-                        <button class="view-btn color-2 w-100 mt-20" type="submit">
+                        <button class="view-btn color-2 mt-20" type="submit" style="">
                             <span>DONE</span>
                         </button>
                     </form>

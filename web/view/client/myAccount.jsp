@@ -87,10 +87,11 @@
                             <div>Address: ${sessionScope.user.add }</div>
                         </div>
                     </div>
-                    <form action="/Shop/client" class="billing-form">
-                        <button class="view-btn color-2 w-100 mt-20" type="submit">
-                            <span>Out</span>
+                    <form action="/Shop/client/view/product-list" class="billing-form">
+                        <button class="view-btn color-2" type="submit" style="margin-left:  883px;border: 1px solid;">
+                            <span>Back to Home</span>
                         </button>
+                        
                     </form>
                 </div>
             </div>
