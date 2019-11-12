@@ -211,4 +211,33 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
     public List<CartItem> search(String name) {
         return null;
     }
+
+    @Override
+    public List<CartItem> getByCartItemId(int id) {
+        List<CartItem> cartItemList = new ArrayList<CartItem>();
+        Connection con = super.getConnect();
+        String sql = "select * from camera_shop.cartitem where cat_id = ?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Product product = productService.get(rs.getInt("product_id"));
+                
+                CartItem cartItem = new CartItem();
+                cartItem.setProduct(product);
+                cartItem.setBuyQuantity(rs.getInt("buy_quantity"));
+                cartItem.setSellPrice(rs.getFloat("sell_price"));
+                
+                cartItemList.add(cartItem);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CartItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        return cartItemList;
+    }
+    
+    
 }

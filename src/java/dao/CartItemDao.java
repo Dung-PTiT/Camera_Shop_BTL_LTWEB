@@ -13,6 +13,8 @@ public interface CartItemDao {
 
 	CartItem get(int id);
 
+        List<CartItem> getByCartItemId(int id);
+       
 	List<CartItem> getAll();
 
 }

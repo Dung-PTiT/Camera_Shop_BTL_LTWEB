@@ -5,14 +5,17 @@ import java.util.List;
 import model.Cart;
 
 public interface CartService {
-	void insert(Cart cart);
 
-	void edit(Cart newCart);
+    void insert(Cart cart);
 
-	void delete(int id);
+    void edit(Cart newCart);
 
-	Cart get(int id);
-	
-	List<Cart> getAll();
+    void delete(int id);
+
+    Cart get(int id);
+
+    List<Cart> getAll();
+
+    List<Cart> getByPersonId(int id);
 
 }

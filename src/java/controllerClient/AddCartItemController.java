@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import model.Product;
 import service.ProductService;
 import service.impl.ProductServiceImpl;
 
-@WebServlet(urlPatterns={"/cart-item/add"})
+@WebServlet(urlPatterns={"/cartItem/add"})
 public class AddCartItemController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
 	@Override
@@ -49,6 +50,7 @@ public class AddCartItemController extends HttpServlet {
 			session.setAttribute("cart", mapCartItem);
 		}
 		
-		resp.sendRedirect(req.getContextPath() + "/view/product-list");//page cart
+		resp.sendRedirect(req.getContextPath() + "/view/cart");
+       
 	}
 }

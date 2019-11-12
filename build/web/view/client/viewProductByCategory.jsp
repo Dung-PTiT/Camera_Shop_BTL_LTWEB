@@ -77,7 +77,7 @@
                                        var="imgUrl"></c:url>
                                 <a href="/Shop/view/product-detail?id=${p.id}"><img
                                         class="img-responsive sm-margin-bottom-20" src="${imgUrl}" id="product-thumbnail" class="rounded img-thumbnail"></a>					
-                                <a href="/Shop/view/product-detail?id=${p.id}"><span class="lnr lnr-cart"></span></a> 				
+                                <a href="/Shop/view/product-detail?id=${p.id}"></a> 				
                             </div>
                             <div class="price">
                                 <h4><a href="/Shop/view/product-detail?id=${p.id}">${p.name }</a></h4>

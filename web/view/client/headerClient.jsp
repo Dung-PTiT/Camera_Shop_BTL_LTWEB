@@ -48,7 +48,7 @@
                             <a class="dropdown-item" href="/Shop/client/view/product/category?cate_id=17">May anh chup lay ngay</a>
                         </div></li>
                     <li><a href="/Shop/client/order/list">Cart</a></li>
-                    <li><a href="/Shop/client/viewHistory">History</a></li>
+                    <li><a href="/Shop/client/view/history-order">History</a></li>
                 </ul>
             </div>
         </div>

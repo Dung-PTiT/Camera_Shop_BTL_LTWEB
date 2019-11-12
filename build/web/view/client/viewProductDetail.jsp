@@ -87,7 +87,7 @@
                             <div>
                                 <div class="quantity-container d-flex align-items-center mt-15">
                                     <form method="get"
-                                          action="/cart-item/add">
+                                          action="/Shop/cartItem/add">
                                         <input type="text" value="${product.id }" name="productId" hidden=""
                                                class="quantity-amount ml-15">
                                         <button type='button' class="quantity-button" name='subtract'

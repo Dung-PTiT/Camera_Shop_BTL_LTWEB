@@ -108,7 +108,6 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
             while (rs.next()) {
                 Person person = personService.get(rs.getInt("person_id"));
-
                 Cart cart = new Cart();
                 cart.setId(rs.getInt("cart_id"));
                 cart.setBuyDate(rs.getDate("buy_date"));
@@ -171,8 +170,38 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
     }
 
     @Override
-    public Cart get(String name) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Cart> getByPersonId(int id) {
+        List<Cart> listCart = new ArrayList<>();
+        String sql = "select cart_id, person_id, buy_date, name_order, phone_order, address_order from cart where person_id = ?";
+        
+        Connection con = super.getConnect();
+         try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Person person = personService.get(rs.getInt("person_id"));
+                Cart cart = new Cart();
+                cart.setId(rs.getInt("cart_id"));
+                cart.setBuyDate(rs.getDate("buy_date"));
+                cart.setBuyer(person);
+                cart.setNameOrder(rs.getString("name_order"));
+                cart.setPhoneOrder(rs.getString("phone_order"));
+                cart.setAddressOrder(rs.getString("address_order"));
+                listCart.add(cart);
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listCart;
     }
 }

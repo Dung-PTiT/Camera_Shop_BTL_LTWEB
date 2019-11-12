@@ -8,38 +8,44 @@ import model.Cart;
 import service.CartService;
 
 public class CartServiceImpl implements CartService {
-	CartDao cartDao = new CartDaoImpl();
 
-	@Override
-	public void insert(Cart cart) {
-		cartDao.insert(cart);
+    CartDao cartDao = new CartDaoImpl();
 
-	}
+    @Override
+    public void insert(Cart cart) {
+        cartDao.insert(cart);
 
-	@Override
-	public List<Cart> getAll() {
-		return cartDao.getAll();
-	}
+    }
 
-	@Override
-	public Cart get(int id) {
-		return cartDao.get(id);
-	}
+    @Override
+    public List<Cart> getAll() {
+        return cartDao.getAll();
+    }
 
-	@Override
-	public void edit(Cart newCart) {
-		Cart oldCart = cartDao.get(newCart.getId());
+    @Override
+    public Cart get(int id) {
+        return cartDao.get(id);
+    }
 
-		oldCart.setBuyDate(newCart.getBuyDate());
-		oldCart.setBuyer(newCart.getBuyer());
-		
-		
-		cartDao.edit(oldCart);
+    @Override
+    public void edit(Cart newCart) {
+        Cart oldCart = cartDao.get(newCart.getId());
 
-	}
+        oldCart.setBuyDate(newCart.getBuyDate());
+        oldCart.setBuyer(newCart.getBuyer());
 
-	@Override
-	public void delete(int id) {
-		cartDao.delete(id);
-	}
+        cartDao.edit(oldCart);
+
+    }
+
+    @Override
+    public void delete(int id) {
+        cartDao.delete(id);
+    }
+
+    @Override
+    public List<Cart> getByPersonId(int id) {
+        return cartDao.getByPersonId(id);
+    }
+
 }

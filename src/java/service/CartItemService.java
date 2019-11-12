@@ -14,5 +14,7 @@ public interface CartItemService {
 	CartItem get(int id);
 
 	List<CartItem> getAll();
-
+        
+       List<CartItem> getByCartItemId(int id);
+        
 }

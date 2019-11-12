@@ -124,11 +124,7 @@
                                 <button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Add</button>
                             </form>
                         </div>
-                        <!--                        <div class="col-md-2 col-6">
-                                                    <div class="quantity-container d-flex align-items-center mt-15">
-                                                      
-                                                    </div>
-                                                </div>-->
+                
                     </div>
                 </c:forEach>
             </div>

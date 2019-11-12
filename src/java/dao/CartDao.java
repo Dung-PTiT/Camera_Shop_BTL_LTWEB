@@ -11,10 +11,10 @@ public interface CartDao {
 
 	void delete(int id);
 
-	Cart get(String name);
-
 	Cart get(int id);
 
+        List<Cart> getByPersonId(int id);
+        
 	List<Cart> getAll();
 
 }
