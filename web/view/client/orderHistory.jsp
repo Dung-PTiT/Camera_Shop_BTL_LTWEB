@@ -49,7 +49,7 @@
                 </div>
             </section>
             <div class="container">
-                <div class="card" style="width: 700px;margin: auto;">
+                <div class="card" style="width: 1000px;margin: auto;">
                     <div class="card-header" style="background-color: cadetblue; text-align: center">
                         <span class="text-white font-weight-bold">Order history information</span>
                     </div>	
@@ -61,6 +61,7 @@
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Date</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -71,6 +72,7 @@
                                     <td>${cart.phoneOrder }</td>
                                     <td>${cart.addressOrder}</td>
                                     <td>${cart.buyDate}</td>
+                                    <td>${cart.statusCart}</td>
                                     <td><a href="/Shop/client/view/orderHistoryDetail?cartId=${cart.id}">VIEW</a></td>
                                 </tr>
                             </c:forEach>

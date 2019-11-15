@@ -139,7 +139,6 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
     @Override
     public List<Product> search(String name) {
         List<Product> products = new ArrayList<Product>();
-
         Connection conn = super.getConnect();
         try {
             String sql = "SELECT * FROM product WHERE name LIKE ?";
@@ -169,7 +168,6 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (SQLException ex) {
             Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return products;
     }
 

@@ -37,7 +37,6 @@ public class ShowHistoryOrderClientController extends HttpServlet {
         Object objP = session.getAttribute("user");
         Person buyer = (Person) objP;
         int buyerId = buyer.getId();
-        //get cart by id user
         List<Cart> cartList = cartService.getByPersonId(buyerId);   
         req.setAttribute("cartList", cartList);
         RequestDispatcher rd = req.getRequestDispatcher("/view/client/orderHistory.jsp");

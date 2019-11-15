@@ -23,7 +23,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
     @Override
     public void insert(Cart cart) {
-        String sql = "INSERT INTO cart(person_id, buy_date, name_order, phone_order, address_order) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO cart(person_id, buy_date, name_order, phone_order, address_order, status) VALUES (?,?,?,?,?,?)";
         Connection conn = super.getConnect();
 
         try {
@@ -33,6 +33,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             ps.setString(3, cart.getNameOrder());
             ps.setString(4, cart.getPhoneOrder());
             ps.setString(5, cart.getAddressOrder());
+            ps.setString(6, "Da tiep nhan");
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -84,7 +85,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 
@@ -97,7 +98,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
     @Override
     public Cart get(int id) {
-        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, person.username, person.id AS person_id "
+        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, cart.status, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id WHERE cart.cart_id=?";
         Connection con = super.getConnect();
 
@@ -115,7 +116,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
                 cart.setNameOrder(rs.getString("name_order"));
                 cart.setPhoneOrder(rs.getString("phone_order"));
                 cart.setAddressOrder(rs.getString("address_order"));
-
+                cart.setStatusCart(rs.getString("status"));
                 return cart;
 
             }
@@ -135,7 +136,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
     @Override
     public List<Cart> getAll() {
         List<Cart> cartList = new ArrayList<Cart>();
-        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, person.username, person.id AS person_id "
+        String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, cart.status, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id";
         Connection con = super.getConnect();
 
@@ -153,6 +154,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
                 cart.setNameOrder(rs.getString("name_order"));
                 cart.setPhoneOrder(rs.getString("phone_order"));
                 cart.setAddressOrder(rs.getString("address_order"));
+                cart.setStatusCart(rs.getString("status"));
                 cartList.add(cart);
 
             }
@@ -172,8 +174,8 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
     @Override
     public List<Cart> getByPersonId(int id) {
         List<Cart> listCart = new ArrayList<>();
-        String sql = "select cart_id, person_id, buy_date, name_order, phone_order, address_order from cart where person_id = ?";
-        
+        String sql = "select cart_id, person_id, buy_date, name_order, phone_order, address_order, status from cart where person_id = ?";
+
         Connection con = super.getConnect();
          try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -189,6 +191,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
                 cart.setNameOrder(rs.getString("name_order"));
                 cart.setPhoneOrder(rs.getString("phone_order"));
                 cart.setAddressOrder(rs.getString("address_order"));
+                cart.setStatusCart(rs.getString("status"));
                 listCart.add(cart);
 
             }

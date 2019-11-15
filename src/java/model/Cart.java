@@ -12,6 +12,7 @@ public class Cart implements Serializable {
     private String nameOrder;
     private String phoneOrder;
     private String addressOrder;
+    private String statusCart;
     private List<CartItem> cartItems;
     
     public String getNameOrder() {
@@ -70,5 +71,15 @@ public class Cart implements Serializable {
     public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
     }
+
+    public String getStatusCart() {
+        return statusCart;
+    }
+
+    public void setStatusCart(String statusCart) {
+        this.statusCart = statusCart;
+    }
+    
+    
 
 }

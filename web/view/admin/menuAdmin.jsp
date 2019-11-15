@@ -33,18 +33,19 @@
                         <p>Table Product</p>
                     </a>
                 </li>
+                 <li>
+                    <a href="/Shop/admin/order/list">
+                        <i class="ti-bell"></i>
+                        <p>Table Order</p>
+                    </a>
+                </li>
                 <li>
                     <a href="/Shop/admin/cart-item/list">
                         <i class="ti-view-list-alt"></i>
                         <p>Cart Items</p>
                     </a>
                 </li>
-                <li>
-                    <a href="/Shop/admin/order/list">
-                        <i class="ti-bell"></i>
-                        <p>Table Order</p>
-                    </a>
-                </li>
+               
                 <li>
                     <a href="/Shop/admin/category/list">
                         <i class="ti-align-center"></i>

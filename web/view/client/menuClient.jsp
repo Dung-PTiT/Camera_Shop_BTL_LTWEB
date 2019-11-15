@@ -38,7 +38,7 @@
                             <a class="dropdown-item" href="/Shop/view/product/category?cate_id=13">May anh du lich</a> 
                             <a class="dropdown-item" href="/Shop/view/product/category?cate_id=14">May anh sieu zoom</a>
                             <a class="dropdown-item" href="/Shop/view/product/category?cate_id=16">May anh mirrorless</a>
-                            <a class="dropdown-item" href="/Shop/view/product/category?cate_id=17">May anh chup lay ngay</a>
+                            <a class="dropdown-item" href="/Shop/view/product/category?cate_id=17">May anh chup lay ngay</a>                     
                         </div>
                     </li>	
                     <li><a href="/Shop/view/cart">Cart</a></li>						
