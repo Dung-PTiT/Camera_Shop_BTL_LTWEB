@@ -4,28 +4,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Mobile Specific Meta -->
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Favicon-->
-        <link rel="shortcut icon" href="/Shop/static/client/img/logoCompany.png">
-        <!-- Author Meta -->
+        <link rel="shortcut icon" href="/Shop/static/client/img/logoCompany.png">       
         <meta name="author" content="CodePixar">
-        <!-- Meta Description -->
         <meta name="description" content="">
-        <!-- Meta Keyword -->
         <meta name="keywords" content="">
-        <!-- meta character set -->
         <meta charset="UTF-8">
-        <!-- Site Title -->
         <title>Shop | Account</title>
 
         <link
             href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
             rel="stylesheet">
-        <!--
-                                CSS
-                                ============================================= -->
         <link rel="stylesheet" href="/Shop/static/client/css/linearicons.css">
         <link rel="stylesheet"
               href="/Shop/static/client/css/font-awesome.min.css">
@@ -80,8 +70,6 @@
                             <div>
                                 <strong>Username : ${sessionScope.user.username }</strong>
                             </div>
-                            <hr>
-                            <div>Password: ${sessionScope.user.password }</div>
                             <hr>
                             <div>Name: ${sessionScope.user.name }</div>
                             <hr>

@@ -26,6 +26,21 @@
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300'
               rel='stylesheet' type='text/css'>
         <link href="/Shop/static/admin/css/themify-icons.css" rel="stylesheet">
+        <style>
+            #product-thumbnail {
+                max-width: 100px;
+                max-height: 100px;
+                min-width: 100px;
+                min-height: 100px;
+            }
+            .breadcrumb-banner {
+                padding: 0px 0 0px 0;
+            }
+            .organic-breadcrumb {
+                margin-bottom: 100px;
+                margin-top: 0px; 
+            }       
+        </style>
     </head>
     <body>
         <jsp:include page="./menuAdmin.jsp" />
@@ -50,49 +65,42 @@
                                 <div class="content table-responsive table-full-width">
                                     <table class="table table-striped">
                                         <thead>
-<!--                                        <th>Number</th>-->
-                                        <th>CartID</th>
-                                        <th>Buyer</th>
-                                        <th>Date</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>                                   
-                                        <th>View</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Product</th>
+                                                <th>Buy Quantity</th>
+                                                <th>Sell Price</th>
+                                                <th>Total</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                            <c:set var="index" value="${0}" />
-                                            <c:forEach items="${cartList}" var="cart">
-
+                                            <c:forEach items="${cartItemList}" var="cartItem">
                                                 <tr>
-                                                    <c:url value='/admin/setOrderStatus?cartID=${cart.id}' var="url" />
-                                            <form action="${url}" method="post">
-                                              
-                                                <td name="cartID">${cart.id}</td>
-                                                <td>${cart.nameOrder}</td>
-                                                <td>${cart.buyDate}</td>
-                                                <td>${cart.phoneOrder}</td>
-                                                <td>${cart.addressOrder}</td>
-                                                <td><a href="<c:url value='/admin/order/details?cartID=${cart.id}'/>">Detail</a></td>
-                                                <td>${cart.statusCart}</td>
-                                                <td>
-                                                    <select name ="statusID"
-                                                            style="border-color: #cff0da;">
-                                                        <option value="1">Da tiep nhan</option>
-                                                        <option value="2">Dang xu ly</option>
-                                                        <option value="3">Dang giao hang</option>
-                                                        <option value="4">Hoan thanh</option>
-                                                        <option value="5">Huy don hang</option>
-                                                    </select>
+                                                    <td> <c:url
+                                                            value='/imageProduct?fileName=${cartItem.product.productFileName }'
+                                                            var="imgUrl" />
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="product-item d-flex align-items-center">
+                                                                <img src="${imgUrl}" id="product-thumbnail"
+                                                                     class="rounded img-thumbnail">
 
-                                                    <button class="btn-group" type="submit">Update</button>
-                                                </td>
-                                            </form>
-                                            </tr>
-                                        </c:forEach>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>${cartItem.product.name }</td>
+                                                    <td>${cartItem.buyQuantity}</td>
+                                                    <td>${cartItem.sellPrice} $</td>
+                                                    <td>${cartItem.sellPrice * cartItem.buyQuantity } $</td>
+                                                </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                     <hr>
+                                    <form action="/Shop/admin/order/list" class="billing-form">               
+                                        <button class="view-btn color-2 mt-20" type="submit" style="margin-left: 855px; border: 1px solid">
+                                            <span>Back</span>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

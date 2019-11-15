@@ -72,7 +72,7 @@
                                     <td>${cart.phoneOrder }</td>
                                     <td>${cart.addressOrder}</td>
                                     <td>${cart.buyDate}</td>
-                                    <td>${cart.statusCart}</td>
+                                    <td style="color:red;">${cart.statusCart}</td>
                                     <td><a href="/Shop/client/view/orderHistoryDetail?cartId=${cart.id}">VIEW</a></td>
                                 </tr>
                             </c:forEach>

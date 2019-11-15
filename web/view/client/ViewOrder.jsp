@@ -4,22 +4,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Mobile Specific Meta -->
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Favicon-->
         <link rel="shortcut icon" href="img/fav.png">
-        <!-- Author Meta -->
         <meta name="author" content="CodePixar">
-        <!-- Meta Description -->
         <meta name="description" content="">
-        <!-- Meta Keyword -->
         <meta name="keywords" content="">
-        <!-- meta character set -->
         <meta charset="UTF-8">
-        <!-- Site Title -->
         <title>Shop</title>
-
         <link
             href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
             rel="stylesheet">
@@ -115,7 +107,7 @@
                         <div class="col-md-2">
                             <a
                                 href="<c:url value='/client/cart-item/delete?productId=${itemMap.key}'/>"><i class="fa fa-remove text-danger" style="font-size: 30px"></i></a>
-                                
+
                             <form method="get" action="/Shop/client/cart-item/add">
                                 <input type="text" value="${itemMap.value.product.id }"
                                        name="productId" hidden="" class="quantity-amount ml-15">
@@ -123,8 +115,7 @@
                                        value="0" id='qty' style="width: 20%"/>
                                 <button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Add</button>
                             </form>
-                        </div>
-                
+                        </div>               
                     </div>
                 </c:forEach>
             </div>

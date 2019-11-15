@@ -16,23 +16,10 @@
             content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
             name='viewport' />
         <meta name="viewport" content="width=device-width" />
-
-
-        <!-- Bootstrap core CSS     -->
         <link href="/Shop/static/admin/css/bootstrap.min.css" rel="stylesheet" />
-
-        <!-- Animation library for notifications   -->
         <link href="/Shop/static/admin/css/animate.min.css" rel="stylesheet" />
-
-        <!--  Paper Dashboard core CSS    -->
         <link href="/Shop/static/admin/css/paper-dashboard.css" rel="stylesheet" />
-
-
-        <!--  CSS for Demo Purpose, don't include it in your project     -->
         <link href="/Shop/static/admin/css/demo.css" rel="stylesheet" />
-
-
-        <!--  Fonts and icons     -->
         <link
             href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
             rel="stylesheet">
@@ -63,7 +50,7 @@
                                 <div class="content table-responsive table-full-width">
                                     <table class="table table-striped">
                                         <thead>
-                                        <th>Number</th>
+<!--                                        <th>Number</th>-->
                                         <th>CartID</th>
                                         <th>Buyer</th>
                                         <th>Date</th>
@@ -80,14 +67,13 @@
                                                 <tr>
                                                     <c:url value='/admin/setOrderStatus?cartID=${cart.id}' var="url" />
                                             <form action="${url}" method="post">
-                                                <c:set var="index" value="${index + 1}" />
-                                                <td>${index }</td>
+                                              
                                                 <td name="cartID">${cart.id}</td>
                                                 <td>${cart.nameOrder}</td>
                                                 <td>${cart.buyDate}</td>
                                                 <td>${cart.phoneOrder}</td>
                                                 <td>${cart.addressOrder}</td>
-                                                <td><a href="<c:url value='/admin/order/edit?id=${cart.id}'/>">Detail</a></td>
+                                                <td><a href="<c:url value='/admin/order/details?cartID=${cart.id}'/>">Detail</a></td>
                                                 <td>${cart.statusCart}</td>
                                                 <td>
                                                     <select name ="statusID"
@@ -99,7 +85,7 @@
                                                         <option value="5">Huy don hang</option>
                                                     </select>
 
-                                                    <button class="btn-group" type="submit">Cap nhat</button>
+                                                    <button class="btn-group" type="submit">Update</button>
                                                 </td>
                                             </form>
                                             </tr>
@@ -115,26 +101,5 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul>
-
-                    <li><a href="#"> Do Trong Dung </a></li>
-                    <li><a href="#"> Blog </a></li>
-                    <li><a href="#"> Licenses </a></li>
-                </ul>
-            </nav>
-            <div class="copyright pull-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                , made with <i class="fa fa-heart heart"></i> by <a href="#">Do
-                    Trong Dung</a>
-            </div>
-        </div>
-    </footer>
-
 </body>
 </html>
