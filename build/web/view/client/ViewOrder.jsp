@@ -132,9 +132,9 @@
                 class="cupon-area d-flex align-items-center justify-content-between flex-wrap">
                 <div class="row">                  
                     <div class="col-md-2">                
-                        <c:url value="/client/checkout" var="url" />
+                        <c:url value="/client/checkout" var="url"/>
                         <form action="${url }" method="post">
-                            <input class="btn btn-primary" type="submit" value="Order" style="margin-left: 938px">
+                            <input class="btn btn-primary" type="submit" value="Order" style="margin-left: 992px">
                         </form>
                     </div>
                 </div>

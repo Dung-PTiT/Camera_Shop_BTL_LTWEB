@@ -207,4 +207,24 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
         }
         return listCart;
     }
+
+    @Override
+    public void updateStatusCart(int cartID, String statusName) {
+        Connection con = super.getConnect();
+        String sql = "update cart set status = ? where cart_id= ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,statusName);
+            ps.setInt(2, cartID);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

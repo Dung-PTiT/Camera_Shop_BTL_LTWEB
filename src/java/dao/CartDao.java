@@ -16,5 +16,7 @@ public interface CartDao {
         List<Cart> getByPersonId(int id);
         
 	List<Cart> getAll();
+        
+        void updateStatusCart(int cartID,String statusName);
 
 }

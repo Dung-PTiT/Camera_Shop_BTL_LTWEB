@@ -98,7 +98,7 @@
                                                         <option value="4">Hoan thanh</option>
                                                         <option value="5">Huy don hang</option>
                                                     </select>
-                                          
+
                                                     <button class="btn-group" type="submit">Cap nhat</button>
                                                 </td>
                                             </form>
