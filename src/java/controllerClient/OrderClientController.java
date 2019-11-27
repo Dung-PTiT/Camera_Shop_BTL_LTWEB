@@ -15,14 +15,18 @@ import javax.servlet.http.HttpSession;
 import model.Cart;
 import model.CartItem;
 import model.Person;
+import model.Product;
 import service.CartItemService;
 import service.CartService;
 import service.PersonService;
+import service.ProductService;
 import service.impl.CartServiceImpl;
 import service.impl.CartServiceItemImpl;
 import service.impl.PersonServiceImpl;
+import service.impl.ProductServiceImpl;
 @WebServlet(urlPatterns="/client/order/add")
 public class OrderClientController extends HttpServlet{
+        ProductService productService = new ProductServiceImpl();
 	CartService cartService = new CartServiceImpl();
 	CartItemService cartItemService = new CartServiceItemImpl();
 	PersonService personService = new PersonServiceImpl();
@@ -44,7 +48,7 @@ public class OrderClientController extends HttpServlet{
 		cart.setBuyer(buyer);
                 cart.setNameOrder(fullname);
                 cart.setPhoneOrder(phone);
-                cart.setAddressOrder(address);
+                cart.setAddressOrder(address);              
 		cartService.insert(cart);
 		Object obj = session.getAttribute("cart");
 		if( obj != null) {	
@@ -52,6 +56,12 @@ public class OrderClientController extends HttpServlet{
 			Set<Integer> keys = mapCartItem.keySet();
 			for(Integer k : keys) {
 				CartItem cartItem = mapCartItem.get(k);
+                                int productID = cartItem.getProduct().getId();
+                                int buyQuantity = cartItem.getBuyQuantity();
+                                Product product = productService.get(productID);
+                                int oldQuantity = product.getQuantity();
+                                int newQuantity = oldQuantity - buyQuantity;
+                                productService.updateProductQuantity(productID,newQuantity);
 				cartItem.setCart(cart);
 				cartItemService.insert(cartItem);
 			}

@@ -15,7 +15,7 @@ import service.ProductService;
 import service.impl.CategoryServiceImpl;
 import service.impl.ProductServiceImpl;
 
-@WebServlet(urlPatterns = "/")
+@WebServlet(urlPatterns = "/index")
 public class controllerIndex extends HttpServlet {
 
     ProductService productService = new ProductServiceImpl();

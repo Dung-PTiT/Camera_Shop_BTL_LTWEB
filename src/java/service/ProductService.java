@@ -8,6 +8,8 @@ public interface ProductService {
 	void create(Product p);
 
 	void update(Product p);
+        
+         void updateProductQuantity(int id, int newQuantity);
 
 	void delete(int id);
 	

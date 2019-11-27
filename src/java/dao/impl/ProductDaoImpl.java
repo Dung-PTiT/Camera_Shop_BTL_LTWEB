@@ -25,7 +25,6 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void create(Product p) {
 
-       
         try {
             String sql = "INSERT INTO product(name, quantity, price, description, product_file_name, cate_id) " + "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -46,12 +45,12 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-       
+
     }
 
     @Override
     public void update(Product p) {
-       
+
         try {
             String sql = "UPDATE product SET name = ?, quantity = ?, price = ?, description = ?, product_file_name = ?, cate_id = ? WHERE id = ? ";
 
@@ -68,12 +67,26 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
- 
+
+    }
+
+    @Override
+    public void updateProductQuantity(int id, int newQuantity) {
+      
+        try {
+            String sql = "update product set quantity = ? where id = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, newQuantity);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Loi CSDL: " + e);
+        }
     }
 
     @Override
     public void delete(int id) {
-       
+
         try {
             String sql = "DELETE FROM product WHERE id = ? ";
 
@@ -84,13 +97,12 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-       
 
     }
 
     @Override
     public Product get(int id) {
-       
+
         try {
             String sql = "SELECT * FROM product WHERE id =?";
 
@@ -114,7 +126,6 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-       
 
         return null;
     }
@@ -122,7 +133,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> search(String name) {
         List<Product> products = new ArrayList<Product>();
-       
+
         try {
             String sql = "SELECT * FROM product WHERE name LIKE ?";
 
@@ -146,13 +157,13 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-       
+
         return products;
     }
 
     @Override
     public Product getByName(String name) {
-       
+
         try {
             String sql = "SELECT * FROM product WHERE name =?";
 
@@ -174,7 +185,6 @@ public class ProductDaoImpl implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        
 
         return null;
     }
@@ -184,7 +194,7 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> productList = new ArrayList<Product>();
         String sql = "SELECT product.id, product.name AS p_name, product.price, product.quantity, product.description ,product.product_file_name,  category.cate_name AS c_name, category.cate_id AS c_id "
                 + "FROM product , category   where product.cate_id = category.cate_id and Category.cate_id=?";
-        
+
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, cate_id);
@@ -205,7 +215,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return productList;
     }
 }
