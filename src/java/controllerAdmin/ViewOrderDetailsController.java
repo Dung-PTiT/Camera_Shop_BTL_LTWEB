@@ -13,18 +13,23 @@ import model.CartItem;
 import service.CartItemService;
 import service.impl.CartServiceItemImpl;
 
-@WebServlet(urlPatterns={"/admin/order/details"})
+@WebServlet(urlPatterns = {"/admin/order/details"})
 public class ViewOrderDetailsController extends HttpServlet {
 
-     private CartItemService cartItemService = new CartServiceItemImpl();
-    
+    private CartItemService cartItemService = new CartServiceItemImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cartID = req.getParameter("cartID");
         List<CartItem> cartItemList = cartItemService.getByCartItemId(Integer.parseInt(cartID));
+        float totalPrice = 0;
+        for (int i = 0; i < cartItemList.size(); i++) {
+            totalPrice += cartItemList.get(i).getBuyQuantity() * cartItemList.get(i).getSellPrice();
+        }
+        req.setAttribute("totalPrice", totalPrice);
         req.setAttribute("cartItemList", cartItemList);
         RequestDispatcher rd = req.getRequestDispatcher("/view/admin/orderDetail.jsp");
         rd.forward(req, resp);
     }
-    
+
 }

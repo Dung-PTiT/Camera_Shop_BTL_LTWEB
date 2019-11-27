@@ -22,6 +22,11 @@ public class ShowOrderHistoryDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cartID = req.getParameter("cartId");
         List<CartItem> cartItemList = cartItemService.getByCartItemId(Integer.parseInt(cartID));
+        float totalPrice = 0;
+        for(int i=0; i<cartItemList.size(); i ++){
+            totalPrice += cartItemList.get(i).getBuyQuantity()*cartItemList.get(i).getSellPrice();
+        }
+        req.setAttribute("totalPrice", totalPrice);
         req.setAttribute("cartItemList", cartItemList);
         RequestDispatcher rd = req.getRequestDispatcher("/view/client/orderHistoryDetail.jsp");
         rd.forward(req, resp);

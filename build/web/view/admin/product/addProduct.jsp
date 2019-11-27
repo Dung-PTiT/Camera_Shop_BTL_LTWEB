@@ -17,23 +17,10 @@
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
-
-
-<!-- Bootstrap core CSS     -->
 <link href="/Shop/static/admin/css/bootstrap.min.css" rel="stylesheet" />
-
-<!-- Animation library for notifications   -->
 <link href="/Shop/static/admin/css/animate.min.css" rel="stylesheet" />
-
-<!--  Paper Dashboard core CSS    -->
 <link href="/Shop/static/admin/css/paper-dashboard.css" rel="stylesheet" />
-
-
-<!--  CSS for Demo Purpose, don't include it in your project     -->
 <link href="/Shop/static/admin/css/demo.css" rel="stylesheet" />
-
-
-<!--  Fonts and icons     -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
 	rel="stylesheet">

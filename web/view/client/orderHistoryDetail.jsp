@@ -101,7 +101,7 @@
                         </tbody>
                     </table>
                 </div>
-             
+                <div style="font-size: 18"><span class="text-danger font-weight-bold " style="margin-left:700px">Total Price: ${totalPrice} $</span></div>
             </div>
         </div>
         <form action="/Shop/client/view/history-order" class="billing-form">               

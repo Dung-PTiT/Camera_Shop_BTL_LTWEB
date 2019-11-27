@@ -3,7 +3,7 @@
 <div class="sidebar" data-background-color="black" data-active-color="danger">
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="/Shop/admin" class="simple-text">
+            <a href="/Shop/admin/user/list" class="simple-text">
                 Camera Shop
             </a>
         </div>

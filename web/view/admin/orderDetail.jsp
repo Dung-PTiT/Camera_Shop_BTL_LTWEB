@@ -95,9 +95,10 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
+                                     <div style="font-size: 18px"><span class="text-danger font-weight-bold " style="margin-left:850px">Total Price: ${totalPrice} $</span></div>
                                     <hr>
                                     <form action="/Shop/admin/order/list" class="billing-form">               
-                                        <button class="view-btn color-2 mt-20" type="submit" style="margin-left: 855px; border: 1px solid">
+                                        <button class="view-btn color-2 mt-20" type="submit" style="margin-left: 757px; border: 1px solid">
                                             <span>Back</span>
                                         </button>
                                     </form>
