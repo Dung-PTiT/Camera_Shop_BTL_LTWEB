@@ -8,13 +8,7 @@
             </a>
         </div>
 
-        <ul class="nav">
-            <li>
-                <a href="/Shop/admin">
-                    <i class="ti-panel"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
+        <ul class="nav">         
             <li>
                 <a href="/Shop/admin/user/list">
                     <i class="ti-user"></i>
@@ -34,16 +28,17 @@
                 </a>
             </li>
             <li>
-                <a href="/Shop/admin/cart-item/list">
-                    <i class="ti-view-list-alt"></i>
-                    <p>Cart Items</p>
+                <a href="/Shop/admin/category/list">
+                    <i class="ti-align-center"></i>
+                    <p>Category</p>
                 </a>
             </li>
 
             <li>
-                <a href="/Shop/admin/category/list">
-                    <i class="ti-align-center"></i>
-                    <p>Category</p>
+                <hr>
+                <a href="/Shop/index">
+                    <i class="ti-arrow-right"></i>
+                    <p>Log Out</p>
                 </a>
             </li>
         </ul>

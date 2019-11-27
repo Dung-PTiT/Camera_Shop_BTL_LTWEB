@@ -35,10 +35,8 @@
 			</div>
 		</form>
 		</div>
-		<div>${msg}</div>	
+                <div>${msg}</div>	
 	</div>
-	
 </div>
-
 </body>
 </html>

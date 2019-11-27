@@ -54,7 +54,6 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
             ps.setInt(2, category.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
@@ -74,7 +73,6 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
@@ -196,7 +194,6 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {

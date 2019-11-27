@@ -40,7 +40,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int id = generatedKeys.getInt(1);
-                p.setId(id);// set vao doi tuong de su dung trong ham main sau nay
+                p.setId(id);
             }
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
@@ -173,7 +173,6 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
     @Override
     public Product getByName(String name) {
-        // JDBC API
         Connection conn = super.getConnect();
         try {
             String sql = "SELECT * FROM product WHERE name =?";
@@ -230,7 +229,6 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
                 productList.add(product);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {

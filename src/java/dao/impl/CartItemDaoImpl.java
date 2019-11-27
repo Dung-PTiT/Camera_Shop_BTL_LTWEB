@@ -89,7 +89,6 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
             ps.setString(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
@@ -142,7 +141,6 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
                 return cartItem;
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
@@ -197,7 +195,6 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {

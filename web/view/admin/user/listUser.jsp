@@ -80,7 +80,7 @@
                                         <th>ID</th>
                                         <th>Avatar</th>
                                         <th>User Name</th>
-                                        <th>Password</th>
+                                       
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Address</th>
@@ -94,7 +94,7 @@
                                                     <c:url value='/image?fileName=${u.avatarFileName }' var="imgUrl"/>
                                                     <td><img src="${imgUrl}" id="product-thumbnail" class="rounded img-thumbnail"/></td>
                                                     <td>${u.username }</td>
-                                                    <td>${u.password }</td>
+                                                 
                                                     <td>${u.name }</td>
                                                     <td>${u.age }</td>
                                                     <td>${u.add }</td>

@@ -63,8 +63,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
             ps.setInt(1, cart.getBuyer().getId());
             ps.setDate(2, new Date(cart.getBuyDate().getTime()));
             ps.executeUpdate();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        } catch (SQLException e) {         
             e.printStackTrace();
         }
 
@@ -121,7 +120,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+          
             e.printStackTrace();
         }
 
@@ -159,7 +158,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+          
             e.printStackTrace();
         }
 
@@ -196,7 +195,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+         
             e.printStackTrace();
         }
 

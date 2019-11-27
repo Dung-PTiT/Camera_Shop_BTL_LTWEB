@@ -17,7 +17,6 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
 
     @Override
     public void create(Person p) {
-        // JDBC API
         Connection conn = super.getConnect();
         try {
             String sql = "INSERT INTO person(name, age, address, username, password, role, avatar_file_name) "
@@ -36,7 +35,7 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int id = generatedKeys.getInt(1);
-                p.setId(id);// set vao doi tuong de su dung trong ham main sau nay
+                p.setId(id);
             }
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
@@ -98,7 +97,6 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
 
     @Override
     public Person get(int id) {
-        // JDBC API
         Connection conn = super.getConnect();
         try {
             String sql = "SELECT * FROM person WHERE id =?";
@@ -134,8 +132,6 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
     @Override
     public List<Person> search(String name) {
         List<Person> persons = new ArrayList<Person>();
-
-        // JDBC API
         Connection conn = super.getConnect();
         try {
             String sql = "SELECT * FROM person WHERE name LIKE ?";
@@ -169,8 +165,7 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
     }
 
     @Override
-    public Person getByUsername(String username) {
-        // JDBC API 
+    public Person getByUsername(String username) { 
         Connection conn = super.getConnect();
         try {
             String sql = "SELECT * FROM person WHERE username =?";

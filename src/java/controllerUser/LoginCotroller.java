@@ -43,7 +43,7 @@ PersonService personService = new PersonServiceImpl();
 			HttpSession session = req.getSession();
 			session.setAttribute("user", p);
 			if(commonConstant.ROLE_ADMIN.equals(p.getRole())) {
-				resp.sendRedirect(req.getContextPath() + "/admin");
+				resp.sendRedirect(req.getContextPath() + "/admin/user/list");
 				return;
 			}else {
 				resp.sendRedirect(req.getContextPath() + "/client/view/product-list");
