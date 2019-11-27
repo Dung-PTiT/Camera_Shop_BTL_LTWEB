@@ -10,89 +10,72 @@ import dao.CounterDao;
 import model.Counter;
 import model.Person;
 
-public class CounterDaoImpl extends JDBCConnection implements CounterDao {
-	@Override
-	public void create(Counter c) {
-		// JDBC API
-		Connection conn = super.getConnect();
-		try {
-			String sql = "INSERT INTO counter(quantity) " + "VALUES (?)";
+public class CounterDaoImpl implements CounterDao {
 
-			PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, c.getNumber());
+    private Connection conn = JDBCConnection.getInstance().getConnection();
 
-			statement.executeUpdate();
+    @Override
+    public void create(Counter c) {
+       
+        try {
+            String sql = "INSERT INTO counter(quantity) " + "VALUES (?)";
 
-			ResultSet generatedKeys = statement.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				int id = generatedKeys.getInt(1);
-				c.setId(id);// set vao doi tuong de su dung trong ham main sau nay
-			}
-		} catch (Exception e) {
-			System.out.println("Loi CSDL: " + e);
-		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+            PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, c.getNumber());
 
-	}
+            statement.executeUpdate();
 
-	@Override
-	public Counter get(int id) {
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int id = generatedKeys.getInt(1);
+                c.setId(id);// set vao doi tuong de su dung trong ham main sau nay
+            }
+        } catch (Exception e) {
+            System.out.println("Loi CSDL: " + e);
+        } 
+    }
 
-		Connection conn = super.getConnect();
-		try {
-			String sql = "SELECT * FROM counter WHERE id =?";
+    @Override
+    public Counter get(int id) {
 
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, id);
+      
+        try {
+            String sql = "SELECT * FROM counter WHERE id =?";
 
-			ResultSet rs = statement.executeQuery();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
 
-			while (rs.next()) {
-				Counter c = new Counter();
-				c.setId(id);
-				c.setNumber(rs.getInt("number"));
-				return c;
-			}
-		} catch (Exception e) {
-			System.out.println("Loi CSDL: " + e);
-		} finally {
+            ResultSet rs = statement.executeQuery();
 
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+            while (rs.next()) {
+                Counter c = new Counter();
+                c.setId(id);
+                c.setNumber(rs.getInt("number"));
+                return c;
+            }
+        } catch (Exception e) {
+            System.out.println("Loi CSDL: " + e);
+        } 
+        
+        return null;
+    }
 
-		return null;
-	}
+    @Override
+    public void update(Counter c) {
+      
+        try {
+            String sql = "UPDATE counter SET quantity = ? WHERE (id = ?) ";
 
-	@Override
-	public void update(Counter c) {
-		Connection conn = super.getConnect();
-		try {
-			String sql = "UPDATE counter SET quantity = ? WHERE (id = ?) ";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, c.getNumber());
+            statement.setInt(2, c.getId());
 
-			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, c.getNumber());
-			statement.setInt(2, c.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Loi CSDL: " + e);
+       
+        }
 
-			statement.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("Loi CSDL: " + e);
-		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-	}
+    }
 
 }

@@ -13,11 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Person;
 
-public class PersonDaoImpl extends JDBCConnection implements PersonDao {
+public class PersonDaoImpl implements PersonDao {
+    
+    private Connection conn = JDBCConnection.getInstance().getConnection();
 
+    
     @Override
-    public void create(Person p) {
-        Connection conn = super.getConnect();
+    public void create(Person p) {      
         try {
             String sql = "INSERT INTO person(name, age, address, username, password, role, avatar_file_name) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -40,17 +42,11 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     @Override
     public void update(Person p) {
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "UPDATE person SET username = ?, password = ?, name = ?, age = ?, address = ?, role = ?, avatar_file_name = ? WHERE (id = ?) ";
 
@@ -68,16 +64,11 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override
     public void delete(int id) {
-        Connection conn = super.getConnect();
+ 
         try {
             String sql = "DELETE FROM person WHERE id = ? ";
 
@@ -88,16 +79,11 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override
     public Person get(int id) {
-        Connection conn = super.getConnect();
+  
         try {
             String sql = "SELECT * FROM person WHERE id =?";
 
@@ -121,18 +107,13 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return null;
     }
 
     @Override
     public List<Person> search(String name) {
         List<Person> persons = new ArrayList<Person>();
-        Connection conn = super.getConnect();
+    
         try {
             String sql = "SELECT * FROM person WHERE name LIKE ?";
 
@@ -156,17 +137,12 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return persons;
     }
 
     @Override
     public Person getByUsername(String username) { 
-        Connection conn = super.getConnect();
+
         try {
             String sql = "SELECT * FROM person WHERE username =?";
 
@@ -189,12 +165,6 @@ public class PersonDaoImpl extends JDBCConnection implements PersonDao {
             }
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
-        }
-
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

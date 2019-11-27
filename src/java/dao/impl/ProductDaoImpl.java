@@ -17,14 +17,15 @@ import model.Product;
 import service.CategoryService;
 import service.impl.CategoryServiceImpl;
 
-public class ProductDaoImpl extends JDBCConnection implements ProductDao {
+public class ProductDaoImpl implements ProductDao {
 
     CategoryService categoryService = new CategoryServiceImpl();
+    private Connection conn = JDBCConnection.getInstance().getConnection();
 
     @Override
     public void create(Product p) {
 
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "INSERT INTO product(name, quantity, price, description, product_file_name, cate_id) " + "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -45,17 +46,12 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+       
     }
 
     @Override
     public void update(Product p) {
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "UPDATE product SET name = ?, quantity = ?, price = ?, description = ?, product_file_name = ?, cate_id = ? WHERE id = ? ";
 
@@ -72,16 +68,12 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+ 
     }
 
     @Override
     public void delete(int id) {
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "DELETE FROM product WHERE id = ? ";
 
@@ -92,18 +84,13 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
 
     }
 
     @Override
     public Product get(int id) {
-        // JDBC API
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "SELECT * FROM product WHERE id =?";
 
@@ -127,11 +114,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
 
         return null;
     }
@@ -139,7 +122,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
     @Override
     public List<Product> search(String name) {
         List<Product> products = new ArrayList<Product>();
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "SELECT * FROM product WHERE name LIKE ?";
 
@@ -163,17 +146,13 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         return products;
     }
 
     @Override
     public Product getByName(String name) {
-        Connection conn = super.getConnect();
+       
         try {
             String sql = "SELECT * FROM product WHERE name =?";
 
@@ -195,11 +174,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (Exception e) {
             System.out.println("Loi CSDL: " + e);
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(PersonDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
         return null;
     }
@@ -209,8 +184,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         List<Product> productList = new ArrayList<Product>();
         String sql = "SELECT product.id, product.name AS p_name, product.price, product.quantity, product.description ,product.product_file_name,  category.cate_name AS c_name, category.cate_id AS c_id "
                 + "FROM product , category   where product.cate_id = category.cate_id and Category.cate_id=?";
-        Connection conn = super.getConnect();
-
+        
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, cate_id);
@@ -231,11 +205,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         return productList;
     }
 }

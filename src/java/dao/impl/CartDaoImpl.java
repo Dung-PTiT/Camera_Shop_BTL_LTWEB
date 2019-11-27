@@ -17,14 +17,15 @@ import model.Person;
 import service.PersonService;
 import service.impl.PersonServiceImpl;
 
-public class CartDaoImpl extends JDBCConnection implements CartDao {
-
+public class CartDaoImpl implements CartDao {
+    
+     private Connection conn = JDBCConnection.getInstance().getConnection();
     PersonService personService = new PersonServiceImpl();
 
     @Override
     public void insert(Cart cart) {
         String sql = "INSERT INTO cart(person_id, buy_date, name_order, phone_order, address_order, status) VALUES (?,?,?,?,?,?)";
-        Connection conn = super.getConnect();
+      
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -45,53 +46,35 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     @Override
     public void edit(Cart cart) {
         String sql = "UPDATE cart SET person_id = ?, buy_date = ? WHERE cart_id = ?";
-        Connection con = super.getConnect();
+        
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, cart.getBuyer().getId());
             ps.setDate(2, new Date(cart.getBuyDate().getTime()));
             ps.executeUpdate();
         } catch (SQLException e) {         
             e.printStackTrace();
         }
-
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM cart WHERE cart_id = ?";
-        Connection con = super.getConnect();
+      
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
 
             e.printStackTrace();
-        }
-
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,10 +82,10 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
     public Cart get(int id) {
         String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, cart.status, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id WHERE cart.cart_id=?";
-        Connection con = super.getConnect();
+      
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
@@ -123,12 +106,6 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
           
             e.printStackTrace();
         }
-
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return null;
     }
 
@@ -137,10 +114,10 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
         List<Cart> cartList = new ArrayList<Cart>();
         String sql = "SELECT cart.cart_id, cart.buy_date, cart.name_order, cart.phone_order, cart.address_order, cart.status, person.username, person.id AS person_id "
                 + "FROM cart INNER JOIN person " + "ON cart.person_id = person.id";
-        Connection con = super.getConnect();
+       
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -161,12 +138,6 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
           
             e.printStackTrace();
         }
-
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return cartList;
     }
 
@@ -175,9 +146,9 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
         List<Cart> listCart = new ArrayList<>();
         String sql = "select cart_id, person_id, buy_date, name_order, phone_order, address_order, status from cart where person_id = ?";
 
-        Connection con = super.getConnect();
+      
          try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
@@ -198,32 +169,22 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
          
             e.printStackTrace();
         }
-
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return listCart;
     }
 
     @Override
     public void updateStatusCart(int cartID, String statusName) {
-        Connection con = super.getConnect();
+      
         String sql = "update cart set status = ? where cart_id= ? ";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,statusName);
             ps.setInt(2, cartID);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
     
 }

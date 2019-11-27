@@ -127,8 +127,6 @@
                                                             href="<c:url value='/admin/product/delete?pid=${p.id }'/>">Delete</a>
                                                         | <a
                                                             href="<c:url value='/admin/product/edit?pid=${p.id }'/>">Edit</a>
-                                                        | <a
-                                                            href="<c:url value='/admin/cart-item/add?productId=${p.id }'/>">Add To Cart</a>	
                                                     </td>
                                                 </tr>
                                             </c:forEach>

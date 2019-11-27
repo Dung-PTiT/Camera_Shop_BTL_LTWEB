@@ -14,12 +14,14 @@ import dao.CategoryDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
-
+public class CategoryDaoImpl  implements CategoryDao {
+    
+     private Connection con = JDBCConnection.getInstance().getConnection();
+    
     @Override
     public void insert(Category category) {
 
-        Connection con = super.getConnect();
+       
 
         try {
             String sql = "INSERT INTO category(cate_name) " + "VALUES (?)";
@@ -35,17 +37,13 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     
     }
 
     @Override
     public void edit(Category category) {
 
-        Connection con = super.getConnect();
+      
 
         try {
             String sql = "UPDATE category SET cate_name = ? WHERE cate_id = ?";
@@ -56,17 +54,13 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     
     }
 
     @Override
     public void delete(int id) {
         String sql = "DELETE FROM category WHERE cate_id = ?";
-        Connection con = super.getConnect();
+      
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -75,18 +69,13 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     @Override
     public Category get(int id) {
         String sql = "SELECT * FROM category WHERE cate_id = ? ";
-        Connection con = super.getConnect();
-
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -104,11 +93,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   
         return null;
     }
 
@@ -116,10 +101,9 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
     public List<Category> getAll() {
         List<Category> categories = new ArrayList<Category>();
         String sql = "SELECT * FROM category";
-        Connection conn = super.getConnect();
 
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -134,12 +118,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+     
         return categories;
     }
 
@@ -147,10 +126,10 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
     public List<Category> search(String keyword) {
         List<Category> categories = new ArrayList<Category>();
         String sql = "SELECT * FROM category WHERE name LIKE ? ";
-        Connection conn = super.getConnect();
+     
 
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
 
@@ -166,19 +145,14 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
         return categories;
     }
 
     @Override
     public Category get(String name) {
         String sql = "SELECT * FROM category WHERE cate_name = ? ";
-        Connection con = super.getConnect();
-
+       
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, name);
@@ -196,11 +170,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
         return null;
     }
 }

@@ -21,7 +21,9 @@ import service.ProductService;
 import service.impl.CartServiceImpl;
 import service.impl.ProductServiceImpl;
 
-public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
+public class CartItemDaoImpl  implements CartItemDao {
+
+    private Connection con = JDBCConnection.getInstance().getConnection();
 
     CartService cartService = new CartServiceImpl();
     ProductService productService = new ProductServiceImpl();
@@ -30,7 +32,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
     @Override
     public void insert(CartItem cartItem) {
         String sql = "INSERT INTO cartitem(cat_id, product_id, buy_quantity, sell_price) VALUES (?,?,?,?)";
-        Connection con = super.getConnect();
+       
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -48,18 +50,13 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     @Override
     public void edit(CartItem cartItem) {
         String sql = "UPDATE cartitem SET cat_id = ?, product_id = ?, buy_quantity = ?, sell_price=? WHERE id = ?";
-        Connection con = super.getConnect();
-
+      
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, cartItem.getCart().getId());
@@ -72,17 +69,13 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     @Override
     public void delete(String id) {
         String sql = "DELETE FROM cartitem WHERE id = ?";
-        Connection con = super.getConnect();
+       
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -91,11 +84,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
     @Override
@@ -114,7 +103,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
                 + "INNER JOIN product "
                 + "ON cartitem.product_id = product.id "
                 + "WHERE cartitem.id = ?";
-        Connection con = super.getConnect();
+      
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -143,11 +132,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
         return null;
     }
 
@@ -167,7 +152,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
                 + "ON cartitem.cat_id = cart.cart_id "
                 + "INNER JOIN product "
                 + "ON cartitem.product_id = product.id ";
-        Connection con = super.getConnect();
+        
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -197,11 +182,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CartDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
         return cartItemList;
     }
 
@@ -212,29 +193,28 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
     @Override
     public List<CartItem> getByCartItemId(int id) {
         List<CartItem> cartItemList = new ArrayList<CartItem>();
-        Connection con = super.getConnect();
+        
         String sql = "select * from camera_shop.cartitem where cat_id = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Product product = productService.get(rs.getInt("product_id"));
-                
+
                 CartItem cartItem = new CartItem();
                 cartItem.setProduct(product);
                 cartItem.setBuyQuantity(rs.getInt("buy_quantity"));
                 cartItem.setSellPrice(rs.getFloat("sell_price"));
-                
+
                 cartItemList.add(cartItem);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CartItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
         return cartItemList;
     }
-    
-    
+
 }
