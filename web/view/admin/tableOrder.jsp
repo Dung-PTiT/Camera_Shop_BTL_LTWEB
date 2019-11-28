@@ -50,7 +50,7 @@
                                 <div class="content table-responsive table-full-width">
                                     <table class="table table-striped">
                                         <thead>
-<!--                                        <th>Number</th>-->
+                                            <!--                                        <th>Number</th>-->
                                         <th>CartID</th>
                                         <th>Buyer</th>
                                         <th>Date</th>
@@ -63,28 +63,40 @@
                                         <tbody>
                                             <c:set var="index" value="${0}" />
                                             <c:forEach items="${cartList}" var="cart">
-
-                                                <tr>
-                                                    <c:url value='/admin/setOrderStatus?cartID=${cart.id}' var="url" />
+                                                <tr><c:url value='/admin/setOrderStatus?cartID=${cart.id}' var="url" />
                                             <form action="${url}" method="post">
-                                              
                                                 <td name="cartID">${cart.id}</td>
                                                 <td>${cart.nameOrder}</td>
                                                 <td>${cart.buyDate}</td>
                                                 <td>${cart.phoneOrder}</td>
                                                 <td>${cart.addressOrder}</td>
-                                                <td><a href="<c:url value='/admin/order/details?cartID=${cart.id}'/>">Detail</a></td>
-                                                <td>${cart.statusCart}</td>
+                                                <td><a href="<c:url value='/admin/order/details?cartID=${cart.id}'/>">Detail</a></td>    
+                                      
+                                                <c:choose> 
+                                                    <c:when test="${cart.statusCart == 'Da tiep nhan'}">
+                                                        <td style="background-color: aqua">${cart.statusCart}</td> 
+                                                    </c:when>
+                                                    <c:when test="${cart.statusCart == 'Dang xu ly'}">
+                                                        <td style="background-color: antiquewhite">${cart.statusCart}</td> 
+                                                    </c:when>
+                                                    <c:when test="${cart.statusCart == 'Dang giao hang'}">
+                                                        <td style="background-color: yellow">${cart.statusCart}</td> 
+                                                    </c:when>
+                                                    <c:when test="${cart.statusCart == 'Hoan thanh'}">
+                                                        <td style="background-color: green">${cart.statusCart}</td> 
+                                                    </c:when>
+                                                    <c:when test="${cart.statusCart == 'Huy don hang'}">
+                                                        <td style="background-color: red">${cart.statusCart}</td> 
+                                                    </c:when>
+                                                </c:choose>
                                                 <td>
-                                                    <select name ="statusID"
-                                                            style="border-color: #cff0da;">
+                                                    <select name ="statusID" style="border-color: #cff0da;">
                                                         <option value="1">Da tiep nhan</option>
                                                         <option value="2">Dang xu ly</option>
                                                         <option value="3">Dang giao hang</option>
                                                         <option value="4">Hoan thanh</option>
                                                         <option value="5">Huy don hang</option>
                                                     </select>
-
                                                     <button class="btn-group" type="submit">Update</button>
                                                 </td>
                                             </form>
